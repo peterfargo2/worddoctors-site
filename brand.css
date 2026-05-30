@@ -73,18 +73,17 @@ footer textarea, footer input, footer select,
 }
 .wd-tmbar img { height: 46px !important; width: auto !important; display: block !important; }
 
-/* 3c. Sticky footer (desktop) — push the footer to the bottom of the screen
-   even when page content is short. #maindiv is the footer's parent; making it
-   a min-height flex column + footer margin-top:auto does it. The 985px content
-   wrapper keeps its own margin:0 auto centering. */
-@media (min-width: 551px) {
-  #maindiv {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 100vh !important;
-  }
-  #maindiv > footer { margin-top: auto !important; }
+/* 3c. Sticky footer — push the footer to the bottom of the screen even when
+   page content is short (all widths). #maindiv is the footer's parent; making
+   it a min-height flex column + footer margin-top:auto does it. The 985px
+   content wrapper keeps its own margin:0 auto centering, and the mobile menu
+   overlays (position:absolute) so it isn't affected by the flex flow. */
+#maindiv {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
+#maindiv > footer { margin-top: auto !important; }
 
 /* 4. THE NAV BAR — single full-width navy toolbar
    The script turns .NavColumn into this bar and moves the club name in. */
