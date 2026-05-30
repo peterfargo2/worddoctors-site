@@ -156,6 +156,27 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #MembersMenuLinks a:hover { background: rgba(255,255,255,.14) !important; color: #fff !important; }
 #MembersMenuLinks li > span { display: none !important; }
 
+/* 4a. Desktop — win the specificity fight with FTH's layout CSS so the bar
+   actually flexes, then pin the login/logout cluster to the top-right corner.
+   (#maindiv div.NavColumn beats FTH's #maindiv .NavColumn rule.) */
+@media (min-width: 551px) {
+  #maindiv div.NavColumn {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    position: relative !important;     /* anchor for the login cluster */
+  }
+  #maindiv #Logins {
+    position: absolute !important;
+    top: .55em !important;             /* nudge to vertically align with the club name */
+    right: 2rem !important;            /* matches the bar's side padding */
+    margin: 0 !important;
+    width: auto !important;
+    z-index: 2 !important;
+  }
+}
+
 /* 4b. Mobile — bar collapses to brand + hamburger; tap to drop the menu */
 @media (max-width: 550px) {
   #maindiv .NavColumn { display: flex !important; position: static !important; flex-wrap: wrap !important; padding: .6em 1rem !important; }
