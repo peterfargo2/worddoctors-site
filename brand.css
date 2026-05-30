@@ -42,6 +42,10 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 
 /* 4. THE NAV BAR — single full-width navy toolbar
    The script turns .NavColumn into this bar and moves the club name in. */
+
+/* stack the bar above the content (FTH lays them out side-by-side by default) */
+#banner + div { display: flex !important; flex-direction: column !important; }
+
 .NavColumn {
   background: var(--brand) !important;
   width: 100vw !important;
