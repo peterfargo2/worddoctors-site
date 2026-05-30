@@ -78,6 +78,7 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
   text-decoration: none !important;
   white-space: nowrap !important;
   margin-right: .4em !important;
+  order: 0 !important;
 }
 .wd-brand b { font-weight: 600 !important; }
 
@@ -106,7 +107,7 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #Podcast, #SocialLinks, #TMBannerAd { display: none !important; }
 
 /* public link row */
-#PublicMenu { display: flex !important; align-items: center !important; }
+#PublicMenu { display: flex !important; align-items: center !important; order: 2 !important; flex-basis: 100% !important; }
 #PublicMenuLinks { background: transparent !important; padding: 0 !important; }
 #PublicMenuLinks ul {
   display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
@@ -121,21 +122,24 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #PublicMenuLinks a:hover { background: rgba(255,255,255,.14) !important; color: #fff !important; }
 #PublicMenuLinks li > span { color: rgba(255,255,255,.5) !important; padding: .5em .8em !important; display: inline-block !important; }
 
-/* login cluster — far right */
-#Logins { display: flex !important; align-items: center !important; margin-left: auto !important; }
+/* login cluster — pinned top-right (first row) */
+#Logins { display: flex !important; align-items: center !important; margin-left: auto !important; order: 1 !important; }
 #Logins .ui-widget-content { display: block !important; background: transparent !important; padding: 0 !important; }
 #Logins .ui-widget-content > div {
   display: flex !important; flex-wrap: wrap !important; justify-content: flex-end !important;
   gap: .4em !important; width: auto !important; margin: 0 !important;
 }
-#memberlogin, #adminlogin, #launchadmin, #adminlogout {
-  width: auto !important; margin: 0 !important; font-size: .85em !important;
-  padding: .45em .9em !important; border-radius: 8px !important;
+#Logins button, #Logins .cssButton, #Logins a {
+  display: inline-block !important; width: auto !important; margin: 0 !important; font-size: .85em !important;
+  padding: .45em .9em !important; border-radius: 8px !important; white-space: nowrap !important;
   border: 1.5px solid rgba(255,255,255,.55) !important; background: transparent !important; color: #fff !important;
+  text-decoration: none !important;
+}
+#Logins button:hover, #Logins .cssButton:hover, #Logins a:hover {
+  background: rgba(255,255,255,.18) !important; color: #fff !important; border-color: rgba(255,255,255,.85) !important;
 }
 #memberlogin { background: #fff !important; color: var(--brand) !important; border-color: #fff !important; }   /* primary */
 #memberlogin:hover { background: var(--brand-light) !important; border-color: var(--brand-light) !important; color: var(--brand) !important; }
-#adminlogin:hover, #launchadmin:hover, #adminlogout:hover { background: rgba(255,255,255,.16) !important; color: #fff !important; }
 
 /* members links (logged in) — second row; disabled placeholders stay hidden */
 #MembersMenu { flex: 1 1 100% !important; order: 20 !important; }
