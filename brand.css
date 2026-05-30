@@ -249,7 +249,7 @@ footer textarea, footer input, footer select,
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
   box-sizing: border-box !important;
-  padding: 0 0 2em !important;                /* no side inset; column is the full-bleed frame */
+  padding: 0 0 0 !important;                /* no side inset; column is the full-bleed frame */
 }
 
 /* side padding for text pages only — keeps the Home marketing page flush to the edges */
