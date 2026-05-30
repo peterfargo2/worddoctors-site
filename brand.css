@@ -40,25 +40,23 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #banner > div:last-child a,
 #banner > div:last-child b { color: #fff !important; font-family: var(--font-head) !important; }
 
-/* 3b. Footer band — the script ADDS this class to FTH's existing footer
-   (it never moves FTH elements) + drops in a cloned TM logo. Navy, white
-   text, for TI brand compliance. */
-.wd-footer {
+/* 3b. Footer — FTH's own <footer> becomes a full-width navy band, with a
+   cloned TM logo added on top by the script (nothing is moved). */
+footer, .wd-footer {
   background: var(--brand) !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
+  margin: 2em calc(50% - 50vw) 0 !important;   /* full-bleed; flush to the bottom */
+  padding: 1.6em 2rem 2em !important;
   box-sizing: border-box !important;
-  padding: 1.8em 2rem 2.2em !important;
   text-align: center !important;
+  font-size: 9pt !important;
 }
-.wd-footer, .wd-footer * { color: #fff !important; }       /* white text on navy */
-.wd-footer a { color: var(--brand-light) !important; }      /* links readable on navy */
-.wd-footer #HitCounter { color: rgba(255,255,255,.7) !important; }
-/* keep any inline-edit fields editable (dark text on white) if they land here */
+footer, footer *, .wd-footer, .wd-footer * { color: #fff !important; }   /* white text on navy */
+footer a, .wd-footer a { color: var(--brand-light) !important; }
+footer textarea, footer input, footer select,
 .wd-footer textarea, .wd-footer input, .wd-footer select {
-  color: var(--text) !important; background: #fff !important;
+  color: var(--text) !important; background: #fff !important;   /* keep any edit field usable */
 }
 
 /* TM logo — sits at the top of the footer (navy blends with the band) */
