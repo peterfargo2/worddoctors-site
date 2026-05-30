@@ -40,6 +40,20 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #banner > div:last-child a,
 #banner > div:last-child b { color: #fff !important; font-family: var(--font-head) !important; }
 
+/* 3b. Toastmasters logo band — the script moves FTH's official TM logo
+   here, right under the nav (kept for TI brand compliance). */
+.wd-tmbar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background: var(--brand-dark) !important;        /* dark, so the white TM logo reads */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 calc(50% - 50vw) 1.2em !important;     /* full-bleed; carries the gap to content */
+  padding: .55em 1rem !important;
+}
+.wd-tmbar img { height: 38px !important; width: auto !important; display: block !important; }
+
 /* 4. THE NAV BAR — single full-width navy toolbar
    The script turns .NavColumn into this bar and moves the club name in. */
 
@@ -50,7 +64,7 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
   background: var(--brand) !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  margin: 0 calc(50% - 50vw) 1.2em !important;     /* full-bleed + gap below */
+  margin: 0 calc(50% - 50vw) 0 !important;          /* full-bleed; TM band below carries the gap */
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
@@ -157,23 +171,21 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #MembersMenuLinks li > span { display: none !important; }
 
 /* 4a. Desktop — win the specificity fight with FTH's layout CSS so the bar
-   actually flexes, then pin the login/logout cluster to the top-right corner.
+   actually flexes. Login cluster stays in-flow and is pushed right with
+   margin-left:auto (in-flow can't spill off-screen the way absolute did).
    (#maindiv div.NavColumn beats FTH's #maindiv .NavColumn rule.) */
 @media (min-width: 551px) {
   #maindiv div.NavColumn {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
-    align-items: flex-start !important;
-    position: relative !important;     /* anchor for the login cluster */
+    align-items: center !important;
   }
   #maindiv #Logins {
-    position: absolute !important;
-    top: .55em !important;             /* nudge to vertically align with the club name */
-    right: 2rem !important;            /* matches the bar's side padding */
-    margin: 0 !important;
+    position: static !important;
+    margin-left: auto !important;   /* push the login cluster to the right */
+    order: 1 !important;            /* sits on the first row, beside the brand */
     width: auto !important;
-    z-index: 2 !important;
   }
 }
 
