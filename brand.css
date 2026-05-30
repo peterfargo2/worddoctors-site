@@ -56,7 +56,7 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
   align-items: center !important;
   flex-wrap: wrap !important;
   gap: .2em 1em !important;
-  padding: .55em max(.9em, calc(50vw - 492px)) !important;
+  padding: .5em 2rem !important;     /* side padding — lower the 2rem for tighter edges */
   border: none !important;
 }
 
@@ -154,7 +154,7 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 
 /* 4b. Mobile — bar collapses to brand + hamburger; tap to drop the menu */
 @media (max-width: 550px) {
-  #maindiv .NavColumn { display: flex !important; position: static !important; flex-wrap: wrap !important; }
+  #maindiv .NavColumn { display: flex !important; position: static !important; flex-wrap: wrap !important; padding: .6em 1rem !important; }
   #wd-toggle { display: inline-block !important; order: 5 !important; margin-left: auto !important; }
   .wd-brand { order: 0 !important; font-size: 1.2rem !important; white-space: normal !important; }
 
