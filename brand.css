@@ -1,72 +1,173 @@
-/* ============================================================
-   Word Doctors Toastmasters (#826937) — custom brand overrides
-   ------------------------------------------------------------
-   HOW TO LOAD THIS:
-   Admin Console -> Website Settings -> Website Statistics tab
-   -> "Google Analytics Script Code" box. Paste ONE line:
+/* Word Doctors Toastmasters — brand.css
+   Custom styling layered over FreeToastHost via the GA-field link injection.
+   FTH uses inline styles, so overrides use !important. */
 
-       <link rel="stylesheet" href="https://YOUR-CDN/brand.css">
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Encode+Sans:wght@400;500;600;700&display=swap');
 
-   (e.g. host this file on a GitHub repo and serve via jsDelivr:
-    https://cdn.jsdelivr.net/gh/USER/REPO@main/brand.css )
-
-   WHY EVERYTHING USES !important:
-   FTH sets most colors as INLINE styles on the elements
-   (e.g. the menu divs have style="background:#FFFFFF"). Inline
-   styles can only be overridden with !important, so it's on
-   nearly every rule below.
-   ============================================================ */
-
-/* ---- 1. QUICK TEST ------------------------------------------------
-   Do this FIRST. Save the GA field, hard-refresh the public site.
-   If the top banner turns hot pink, your injection works.
-   Then delete this block and move on. */
-#banner { background: #ff00aa !important; }
-
-/* ---- 2. Your palette (edit these) -------------------------------- */
+/* 1. Palette — edit these to retune the whole site */
 :root {
-  --brand:        #0b3d61;   /* primary brand color   */
-  --brand-dark:   #07273f;   /* darker shade          */
-  --brand-accent: #c0392b;   /* accent / links        */
-  --page-bg:      #f4f7fa;   /* page wallpaper         */
-  --content-bg:   #ffffff;   /* main content panel     */
-  --text:         #1a1a1a;   /* body text             */
+  --brand:        #00203b;  /* primary navy  */
+  --brand-dark:   #02142e;  /* darkest navy  */
+  --brand-mid:    #12517c;  /* medium blue   */
+  --brand-accent: #3576b1;  /* bright blue   */
+  --brand-light:  #8dc5e8;  /* light blue    */
+  --teal:         #0c6e6d;  /* accent (unused) */
+
+  --page-bg:      #eceff3;  /* page background  */
+  --content-bg:   #ffffff;  /* content + menus  */
+  --text:         #2b2b2b;  /* body text        */
+  --muted:        #707070;  /* secondary text   */
+  --border:       #d7dde4;  /* dividers         */
+  --hover-tint:   rgba(53,118,177,.12);  /* nav hover wash */
+
+  --font-head: 'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+  --font-body: 'Encode Sans', Tahoma, 'Trebuchet MS', Helvetica, Arial, sans-serif;
 }
 
-/* ---- 3. Page background (body.club.wallpaper) -------------------- */
-body.club.wallpaper { background: var(--page-bg) !important; }
+/* 2. Page background + base type */
+body.club,
+body.club.wallpaper,
+.wallpaper { background: var(--page-bg) !important; }
 
-/* ---- 4. Banner: top logo strip + club-name bar ------------------- */
+body { font-family: var(--font-body) !important; color: var(--text) !important; }
+
+/* 3. Banner (dark, so the white logo shows) */
 #banner { background: var(--brand) !important; }
-/* club-name bar carries inline background:white -> needs !important */
-#banner > div:last-child           { background: var(--brand-dark) !important; }
+
+#banner > div:last-child { background: var(--brand-dark) !important; }   /* club-name bar */
 #banner > div:last-child a,
-#banner > div:last-child b         { color: #ffffff !important; }
-
-/* ---- 5. Left navigation column ----------------------------------- */
-#PublicMenuLinks,
-#MembersMenuLinks                  { background: var(--content-bg) !important; }
-.MenuHeading,
-.ui-accordion-header               { background: var(--brand) !important;
-                                     color: #ffffff !important; }
-#PublicMenuLinks a,
-#MembersMenuLinks a                { color: var(--text) !important; }
-#PublicMenuLinks li                { border-bottom: 1px solid rgba(0,0,0,.08) !important; }
-
-/* ---- 6. Main content area ---------------------------------------- */
-.ContentColumn .MainContent        { background: var(--content-bg) !important; }
-#HomePage h3,
-#AllUserContent > div > h3         { color: var(--brand) !important; }
-
-/* ---- 7. Typography ----------------------------------------------- */
-body, .MainContent, .NavColumn,
-#PublicMenuLinks, #MembersMenuLinks {
-  font-family: "Segoe UI", system-ui, Arial, sans-serif !important;
+#banner > div:last-child b {
+  color: #fff !important;
+  font-family: var(--font-head) !important;
+  letter-spacing: .3px;
 }
 
-/* ---- 8. Buttons -------------------------------------------------- */
+/* 4. Left navigation */
+.NavColumn { background: transparent !important; }
+
+/* hidden sidebar sections */
+#Podcast { display: none !important; }
+
+/* section headers (Main Menu, Podcast, Social, Logins…) */
+.NavColumn .MenuHeading,
+.NavColumn .ui-accordion-header {
+  background: transparent !important;
+  color: var(--brand) !important;
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  padding: 1.1em .5em .5em !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+}
+.NavColumn .ui-accordion-header a,
+.NavColumn .ui-accordion-header span { color: var(--brand) !important; }
+
+/* tabs (Main Menu / Members Only) */
+#MenuTabs { border: none !important; }
+#MenuTabs a {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  color: var(--brand) !important;
+}
+
+/* link panels */
+#PublicMenuLinks,
+#MembersMenuLinks {
+  background: transparent !important;
+  padding: .5em .35em !important;
+}
+
+/* nav links — borderless rows, soft rounded hover */
+#PublicMenuLinks li,
+#MembersMenuLinks li {
+  border: none !important;
+  margin: 1px 0 !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+}
+#PublicMenuLinks a,
+#MembersMenuLinks a,
+#PublicMenuLinks li > span,
+#MembersMenuLinks li > span {
+  display: block !important;
+  color: var(--brand) !important;
+  text-decoration: none !important;
+  padding: .55em .8em !important;
+  border-radius: 8px !important;
+  transition: background-color .15s ease, color .15s ease !important;
+}
+#PublicMenuLinks a:hover,
+#MembersMenuLinks a:hover {
+  background: var(--hover-tint) !important;
+  color: var(--brand-mid) !important;
+}
+
+/* 5. Login block position
+   Sidebar becomes a flex column (desktop only) so blocks can reorder.
+   Lower order = higher up. Logins is pinned to the top; set
+   #Logins to order: 99 to drop it to the bottom. Delete this
+   section to undo all repositioning. */
+@media (min-width: 551px) {
+  #banner + div { display: flex !important; align-items: flex-start !important; }
+  .NavColumn   { display: flex !important; flex-direction: column !important; }
+  .ContentColumn { flex: 1 1 auto !important; }
+
+  #Logins      { order: -1 !important; }
+  #PublicMenu  { order:  0 !important; }
+  #MembersMenu { order:  1 !important; }
+  #SocialLinks { order:  2 !important; }
+  #Podcast     { order:  3 !important; }
+  #TMBannerAd  { order:  4 !important; }
+}
+
+/* 6. Content area (FTH-generated parts only) */
+.ContentColumn .MainContent,
+.homepagepanels { background: var(--content-bg) !important; }
+
+/* generated section headings (Find Your Voice, etc.) */
+#HomePage h3,
+#HomePage h3 span {
+  font-family: var(--font-head) !important;
+  color: var(--brand) !important;
+}
+
+/* links in the default panels */
+.homepagepanels a { color: var(--brand-accent) !important; }
+.homepagepanels a:hover { color: var(--brand-mid) !important; }
+
+/* 7. Buttons (set border-radius: 999px for pill shape) */
 .cssButton {
   background: var(--brand) !important;
-  color: #ffffff !important;
-  border: none !important;
+  color: #fff !important;
+  border: 1px solid var(--brand) !important;
+  border-radius: 8px !important;
+  padding: .6em 1.1em !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: .01em !important;
+  box-shadow: 0 1px 2px rgba(2,20,46,.18) !important;
+  transition: background-color .15s ease, box-shadow .15s ease, transform .05s ease !important;
 }
+.cssButton:hover {
+  background: var(--brand-mid) !important;
+  border-color: var(--brand-mid) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 8px rgba(2,20,46,.22) !important;
+}
+.cssButton:active { transform: translateY(1px) !important; }
+.cssButton:disabled {
+  background: #e3e6ea !important;
+  border-color: #e3e6ea !important;
+  color: #9aa3ad !important;
+  box-shadow: none !important;
+}
+
+/* 8. Misc accents */
+.fth-combobox > select { border: 1px solid var(--brand) !important; }  /* dropdowns */
+.club #privacyNotice    { background-color: var(--brand) !important; }  /* cookie/privacy notice */
+#HitCounter             { color: var(--muted) !important; }            /* visitor counter */
+hr                      { border-bottom: 1px solid var(--border) !important; }
