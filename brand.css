@@ -40,8 +40,9 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #banner > div:last-child a,
 #banner > div:last-child b { color: #fff !important; font-family: var(--font-head) !important; }
 
-/* 3b. Footer band — the script moves FTH's official TM logo + the
-   copyright/disclaimer text into this navy footer (TI brand compliance). */
+/* 3b. Footer band — the script ADDS this class to FTH's existing footer
+   (it never moves FTH elements) + drops in a cloned TM logo. Navy, white
+   text, for TI brand compliance. */
 .wd-footer {
   background: var(--brand) !important;
   width: 100vw !important;
@@ -55,6 +56,10 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 .wd-footer, .wd-footer * { color: #fff !important; }       /* white text on navy */
 .wd-footer a { color: var(--brand-light) !important; }      /* links readable on navy */
 .wd-footer #HitCounter { color: rgba(255,255,255,.7) !important; }
+/* keep any inline-edit fields editable (dark text on white) if they land here */
+.wd-footer textarea, .wd-footer input, .wd-footer select {
+  color: var(--text) !important; background: #fff !important;
+}
 
 /* TM logo — sits at the top of the footer (navy blends with the band) */
 .wd-tmbar {
