@@ -1,0 +1,72 @@
+/* ============================================================
+   Word Doctors Toastmasters (#826937) — custom brand overrides
+   ------------------------------------------------------------
+   HOW TO LOAD THIS:
+   Admin Console -> Website Settings -> Website Statistics tab
+   -> "Google Analytics Script Code" box. Paste ONE line:
+
+       <link rel="stylesheet" href="https://YOUR-CDN/brand.css">
+
+   (e.g. host this file on a GitHub repo and serve via jsDelivr:
+    https://cdn.jsdelivr.net/gh/USER/REPO@main/brand.css )
+
+   WHY EVERYTHING USES !important:
+   FTH sets most colors as INLINE styles on the elements
+   (e.g. the menu divs have style="background:#FFFFFF"). Inline
+   styles can only be overridden with !important, so it's on
+   nearly every rule below.
+   ============================================================ */
+
+/* ---- 1. QUICK TEST ------------------------------------------------
+   Do this FIRST. Save the GA field, hard-refresh the public site.
+   If the top banner turns hot pink, your injection works.
+   Then delete this block and move on. */
+#banner { background: #ff00aa !important; }
+
+/* ---- 2. Your palette (edit these) -------------------------------- */
+:root {
+  --brand:        #0b3d61;   /* primary brand color   */
+  --brand-dark:   #07273f;   /* darker shade          */
+  --brand-accent: #c0392b;   /* accent / links        */
+  --page-bg:      #f4f7fa;   /* page wallpaper         */
+  --content-bg:   #ffffff;   /* main content panel     */
+  --text:         #1a1a1a;   /* body text             */
+}
+
+/* ---- 3. Page background (body.club.wallpaper) -------------------- */
+body.club.wallpaper { background: var(--page-bg) !important; }
+
+/* ---- 4. Banner: top logo strip + club-name bar ------------------- */
+#banner { background: var(--brand) !important; }
+/* club-name bar carries inline background:white -> needs !important */
+#banner > div:last-child           { background: var(--brand-dark) !important; }
+#banner > div:last-child a,
+#banner > div:last-child b         { color: #ffffff !important; }
+
+/* ---- 5. Left navigation column ----------------------------------- */
+#PublicMenuLinks,
+#MembersMenuLinks                  { background: var(--content-bg) !important; }
+.MenuHeading,
+.ui-accordion-header               { background: var(--brand) !important;
+                                     color: #ffffff !important; }
+#PublicMenuLinks a,
+#MembersMenuLinks a                { color: var(--text) !important; }
+#PublicMenuLinks li                { border-bottom: 1px solid rgba(0,0,0,.08) !important; }
+
+/* ---- 6. Main content area ---------------------------------------- */
+.ContentColumn .MainContent        { background: var(--content-bg) !important; }
+#HomePage h3,
+#AllUserContent > div > h3         { color: var(--brand) !important; }
+
+/* ---- 7. Typography ----------------------------------------------- */
+body, .MainContent, .NavColumn,
+#PublicMenuLinks, #MembersMenuLinks {
+  font-family: "Segoe UI", system-ui, Arial, sans-serif !important;
+}
+
+/* ---- 8. Buttons -------------------------------------------------- */
+.cssButton {
+  background: var(--brand) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
