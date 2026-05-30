@@ -14,11 +14,11 @@
   --teal:         #0c6e6d;  /* accent (unused) */
 
   --page-bg:      #eceff3;  /* page background  */
-  --content-bg:   #ffffff;  /* content + menus  */
+  --content-bg:   #ffffff;  /* content panels   */
   --text:         #2b2b2b;  /* body text        */
-  --muted:        #707070;  /* secondary text   */
-  --border:       #d7dde4;  /* dividers         */
-  --hover-tint:   rgba(53,118,177,.12);  /* nav hover wash */
+  --muted:        #8a93a0;  /* quiet labels     */
+  --border:       #e2e7ec;  /* dividers         */
+  --hover-tint:   rgba(53,118,177,.10);  /* nav hover wash */
 
   --font-head: 'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
   --font-body: 'Encode Sans', Tahoma, 'Trebuchet MS', Helvetica, Arial, sans-serif;
@@ -42,32 +42,45 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
   letter-spacing: .3px;
 }
 
-/* 4. Left navigation */
+/* 4. Left navigation — airy & borderless */
 .NavColumn { background: transparent !important; }
 
 /* hidden sidebar sections */
 #Podcast { display: none !important; }
 
-/* section headers (Main Menu, Podcast, Social, Logins…) */
+/* strip all the FTH/jQuery-UI boxes, borders, and panel fills */
+.NavColumn .ui-widget,
+.NavColumn .ui-widget-content,
+.NavColumn .ui-accordion,
+.NavColumn .ui-tabs,
+.NavColumn #PublicMenu,
+.NavColumn #MembersMenu,
+.NavColumn #Logins {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* section labels (Logins, Main Menu, Members Only…) — quiet uppercase */
 .NavColumn .MenuHeading,
 .NavColumn .ui-accordion-header {
   background: transparent !important;
-  color: var(--brand) !important;
+  color: var(--muted) !important;
   font-family: var(--font-body) !important;
   font-size: 11px !important;
   font-weight: 700 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .13em !important;
   text-transform: uppercase !important;
-  padding: 1.1em .5em .5em !important;
+  padding: 1.3em .9em .4em !important;
   border: none !important;
-  border-bottom: 1px solid var(--border) !important;
   border-radius: 0 !important;
 }
 .NavColumn .ui-accordion-header a,
-.NavColumn .ui-accordion-header span { color: var(--brand) !important; }
+.NavColumn .ui-accordion-header span { color: var(--muted) !important; }
 
 /* tabs (Main Menu / Members Only) */
-#MenuTabs { border: none !important; }
+#MenuTabs { border: none !important; background: transparent !important; }
 #MenuTabs a {
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
@@ -78,16 +91,15 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 #PublicMenuLinks,
 #MembersMenuLinks {
   background: transparent !important;
-  padding: .5em .35em !important;
+  padding: .3em .35em !important;
 }
 
-/* nav links — borderless rows, soft rounded hover */
+/* nav links — borderless rows with a soft rounded hover */
 #PublicMenuLinks li,
 #MembersMenuLinks li {
   border: none !important;
   margin: 1px 0 !important;
   padding: 0 !important;
-  border-radius: 8px !important;
 }
 #PublicMenuLinks a,
 #MembersMenuLinks a,
@@ -96,8 +108,8 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
   display: block !important;
   color: var(--brand) !important;
   text-decoration: none !important;
-  padding: .55em .8em !important;
-  border-radius: 8px !important;
+  padding: .6em .9em !important;
+  border-radius: 10px !important;
   transition: background-color .15s ease, color .15s ease !important;
 }
 #PublicMenuLinks a:hover,
@@ -107,13 +119,13 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 }
 
 /* 5. Login block position
-   Sidebar becomes a flex column (desktop only) so blocks can reorder.
-   Lower order = higher up. Logins is pinned to the top; set
-   #Logins to order: 99 to drop it to the bottom. Delete this
-   section to undo all repositioning. */
+   Sidebar becomes a flex column (desktop only) so blocks can reorder,
+   with a gap for breathing room. Lower order = higher up; Logins is
+   pinned to the top (set #Logins to order: 99 to drop it to the bottom).
+   Delete this section to undo all repositioning. */
 @media (min-width: 551px) {
   #banner + div { display: flex !important; align-items: flex-start !important; }
-  .NavColumn   { display: flex !important; flex-direction: column !important; }
+  .NavColumn   { display: flex !important; flex-direction: column !important; gap: 6px !important; }
   .ContentColumn { flex: 1 1 auto !important; }
 
   #Logins      { order: -1 !important; }
@@ -139,31 +151,29 @@ body { font-family: var(--font-body) !important; color: var(--text) !important; 
 .homepagepanels a { color: var(--brand-accent) !important; }
 .homepagepanels a:hover { color: var(--brand-mid) !important; }
 
-/* 7. Buttons (set border-radius: 999px for pill shape) */
+/* 7. Buttons — light outlined pills that fill on hover
+   (want them solid instead? set background:var(--brand) + color:#fff) */
 .cssButton {
-  background: var(--brand) !important;
-  color: #fff !important;
-  border: 1px solid var(--brand) !important;
-  border-radius: 8px !important;
-  padding: .6em 1.1em !important;
+  background: transparent !important;
+  color: var(--brand) !important;
+  border: 1.5px solid var(--brand) !important;
+  border-radius: 10px !important;
+  padding: .55em 1.1em !important;
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
-  letter-spacing: .01em !important;
-  box-shadow: 0 1px 2px rgba(2,20,46,.18) !important;
-  transition: background-color .15s ease, box-shadow .15s ease, transform .05s ease !important;
+  box-shadow: none !important;
+  transition: background-color .15s ease, color .15s ease !important;
 }
 .cssButton:hover {
-  background: var(--brand-mid) !important;
-  border-color: var(--brand-mid) !important;
+  background: var(--brand) !important;
   color: #fff !important;
-  box-shadow: 0 3px 8px rgba(2,20,46,.22) !important;
+  border-color: var(--brand) !important;
 }
 .cssButton:active { transform: translateY(1px) !important; }
 .cssButton:disabled {
-  background: #e3e6ea !important;
-  border-color: #e3e6ea !important;
-  color: #9aa3ad !important;
-  box-shadow: none !important;
+  background: transparent !important;
+  border-color: var(--border) !important;
+  color: #aeb6bf !important;
 }
 
 /* 8. Misc accents */
