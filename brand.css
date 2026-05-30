@@ -308,5 +308,5 @@ footer textarea, footer input, footer select,
 /* 7. Misc accents */
 .fth-combobox > select { border: 1px solid var(--brand) !important; }
 .club #privacyNotice    { background-color: var(--brand) !important; }
-#HitCounter             { color: var(--muted) !important; }
+#HitCounter             { display: none !important; }
 hr                      { border-bottom: 1px solid var(--border) !important; }
