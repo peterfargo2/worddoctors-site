@@ -254,8 +254,7 @@ footer textarea, footer input, footer select,
   padding: 0 !important;                      /* no inset; column is the full-bleed frame */
 }
 
-/* side + bottom padding for text pages only — keeps the Home marketing page flush */
-#MeetingInfo .MainContent,
+/* side + bottom padding for text pages only — Home + Meeting Info run flush */
 #MeetOurMembers .MainContent,
 #CustomWebPage .MainContent,
 #Unsubscribed .MainContent,
@@ -265,8 +264,8 @@ footer textarea, footer input, footer select,
   padding-bottom: 2em !important;
 }
 
-/* hide the empty FTH "Main Heading" slot on the Home page (the marketing block has its own hero) */
-#HomePage > h3 { display: none !important; }
+/* hide the empty FTH "Main Heading" slot (the marketing blocks have their own hero) */
+#HomePage > h3, #MeetingInfo > h3 { display: none !important; }
 
 /* Home page sits flush to the footer — no trailing gap below the last section */
 #HomePage, #HomePage .MainContent { margin-bottom: 0 !important; padding-bottom: 0 !important; }
